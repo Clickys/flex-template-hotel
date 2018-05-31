@@ -24,19 +24,16 @@ html {
 }
 
 body {
-    background-image: linear-gradient(
-        to bottom right,
-        var(--color-primary),
-        var(--color-primary-dark)
-    );
+    background-image: linear-gradient( to bottom right, var(--color-primary), var(--color-primary-dark));
     background-repeat: no-repeat;
-
     font-family: 'Open Sans', sans-serif;
 }
 
 .container {
     max-width: 120rem;
     margin: 8rem auto;
+    min-height: 50rem;
+    box-shadow: 1rem 1rem 8rem rgba(0, 0, 0, .5)
 }
 
 .header {
@@ -44,16 +41,15 @@ body {
     height: 7rem;
     border-bottom: 2px solid var(--color-grey-light-3);
     font-size: 1.4rem;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .brand-logo {
         height: 3.5rem;
         margin-left: 1.2rem;
     }
 }
+
 .search-form {
     display: flex;
     align-items: center;
@@ -66,12 +62,10 @@ body {
         width: 80%;
         transition-property: width;
         transition-duration: 0.3s;
-
         &:focus {
             width: 100%;
         }
     }
-
     &__icon {
         width: 3rem;
         height: 3rem;
@@ -86,16 +80,13 @@ body {
     align-items: center;
     flex: 0 0 18%;
     align-self: stretch;
-
     &__icon-box {
         padding: 0 1.2rem;
         cursor: pointer;
         height: 100%;
-
         display: flex;
         align-items: center;
         position: relative;
-
         &:hover {
             background-color: var(--color-grey-light-2);
         }
@@ -105,7 +96,6 @@ body {
         height: 3rem;
         fill: var(--color-grey-dark-2);
         padding: 0.8rem;
-
         &__notification {
             background-color: var(--color-primary);
             border-radius: 50%;
@@ -117,19 +107,16 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-
             position: absolute;
             right: 1.2rem;
             top: 1rem;
         }
     }
-
     &__user {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-left: auto;
-
         padding: 2rem;
         &-img {
             border-radius: 50%;
@@ -141,28 +128,23 @@ body {
 
 .main-container {
     display: flex;
-
     .menu {
         flex: 0 0 18%;
         background-color: var(--color-grey-dark-1);
         display: flex;
         flex-direction: column;
-
         &__items {
             list-style-type: none;
             margin-top: 3.5rem;
             font-size: 1.5rem;
             text-align: center;
-
             &__item {
                 margin-bottom: 2.3rem;
                 text-transform: uppercase;
                 position: relative;
-
                 &-active {
                     background-color: var(--color-primary);
                 }
-
                 &__link:link,
                 &__link:visited {
                     text-decoration: none;
@@ -175,7 +157,6 @@ body {
                     z-index: 10;
                     position: relative;
                 }
-
                 &::before {
                     content: '';
                     position: absolute;
@@ -185,9 +166,7 @@ body {
                     width: 3px;
                     background-color: var(--color-primary);
                     transform: scale(0);
-                    transition: transform 0.2s,
-                        width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
-                        background-color 0.1s;
+                    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
                 }
                 &:hover::before {
                     transform: scale(1);
@@ -200,5 +179,145 @@ body {
 
 .details {
     background-color: #fff;
+    flex: 1;
+    .gallery {
+        display: flex;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.hotel {
+    &__rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-align: center;
+        &__heading {
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            color: var(--color-grey-light-4);
+            margin: 0 1.2rem;
+        }
+        &__stars {
+            display: flex;
+            align-items: center;
+            flex: 0 0 50%;
+            &-icon {
+                height: 2rem;
+                width: 2rem;
+                fill: var(--color-primary);
+            }
+        }
+        &__button {
+            border: none;
+            color: var(--color-primary);
+            background-color: transparent;
+            border-bottom: 1px solid var(--color-primary);
+            display: inline-block;
+            outline: 0;
+            margin-left: auto;
+            margin-right: 1.4rem;
+        }
+        &__number {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--color-primary);
+            color: #fff;
+            padding: 2rem;
+        }
+    }
+}
+
+.hotel__details {
+    background-color: var(--color-grey-light-1);
+    display: flex;
+    font-size: 1.4rem;
+    color: var(--color-grey-dark-2);
+    padding: 4.5rem;
+}
+
+.hotel__main {
+    flex: 0 0 60%;
+    background-color: #fff;
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4.5rem;
+    margin-right: 4.5rem;
+    &__para {
+        border-bottom: 1px solid var(--color-grey-light-2);
+        p {
+            margin-bottom: 2.5rem;
+        }
+    }
+    &__menu {
+        border-bottom: 1px solid var(--color-grey-light-2);
+        margin-bottom: 2.5rem;
+    }
+    &__list {
+        margin: 3rem 0;
+        padding: 3rem 0;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            flex: 0 0 50%;
+            margin-bottom: .7rem;
+        }
+        a {
+            text-decoration: none;
+            color: var(--color-grey-dark-2);
+            display: inline-block;
+            &::before {
+                content: '';
+                background-color: var(--color-primary);
+                -webkit-mask-image: url(../img/chevron-thin-right.svg);
+                height: 1.2rem;
+                width: 1.2rem;
+                display: inline-block;
+                margin-right: 1.7rem;
+                -webkit-mask-size: cover;
+            }
+        }
+    }
+}
+
+.hotel__main__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    p {
+        color: var(--color-grey-light-4);
+        margin-right: auto;
+    }
+}
+
+.footer__imgs {
+    display: flex;
+    margin-left: auto;
+    &__img img {
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        border: 2px solid #fff;
+        margin-left: -1.5rem;
+    }
+}
+
+.user-reviews {
+    display: flex;
+    flex-direction: column;
+}
+
+.review {
+    background-color: #fff;
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, .5);
+    margin-bottom: 2rem;
     flex: 1;
 }
