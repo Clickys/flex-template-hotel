@@ -11,29 +11,45 @@
     --color-grey-dark-3: #999;
 }
 
+// MEDIA QUERYS BREAKING POINTS
+$bp-largest: 75em;
+$bp-large: 68.75em;
+$bp-medium: 62.5em;
+$bp-small: 40em;
 *,
 *::before,
 *::after {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
 }
 
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%;
+    }
 }
 
 body {
     background-image: linear-gradient( to bottom right, var(--color-primary), var(--color-primary-dark));
     background-repeat: no-repeat;
     font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .container {
     max-width: 120rem;
     margin: 8rem auto;
     min-height: 50rem;
-    box-shadow: 1rem 1rem 8rem rgba(0, 0, 0, .5)
+    box-shadow: 1rem 1rem 8rem rgba(0, 0, 0, 0.5);
+    @media only screen and (max-width: $bp-largest) {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .header {
@@ -44,6 +60,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media only screen and (max-width: $bp-small) {
+        justify-content: space-around;
+        flex-wrap: wrap;
+        height: 11rem;
+    }
     .brand-logo {
         height: 3.5rem;
         margin-left: 1.2rem;
@@ -54,6 +75,10 @@ body {
     display: flex;
     align-items: center;
     flex: 0 0 50%;
+    @media only screen and (max-width: $bp-small) {
+        order: 1;
+        flex: 0 0 100%;
+    }
     &__input {
         border: none;
         padding: 1rem 2rem;
@@ -65,12 +90,18 @@ body {
         &:focus {
             width: 100%;
         }
+        @media only screen and (max-width: $bp-small) {
+            width: 100%;
+        }
     }
     &__icon {
         width: 3rem;
         height: 3rem;
         fill: var(--color-grey-dark-2);
         margin-left: 0.5rem;
+        @media only screen and (max-width: $bp-small) {
+            display: none;
+        }
     }
 }
 
@@ -96,6 +127,10 @@ body {
         height: 3rem;
         fill: var(--color-grey-dark-2);
         padding: 0.8rem;
+        @media only screen and (max-width: $bp-large) {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
         &__notification {
             background-color: var(--color-primary);
             border-radius: 50%;
@@ -128,16 +163,21 @@ body {
 
 .main-container {
     display: flex;
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+    }
     .menu {
         flex: 0 0 18%;
         background-color: var(--color-grey-dark-1);
-        display: flex;
-        flex-direction: column;
         &__items {
             list-style-type: none;
             margin-top: 3.5rem;
             font-size: 1.5rem;
             text-align: center;
+            @media only screen and (max-width: $bp-medium) {
+                display: flex;
+                justify-content: space-around;
+            }
             &__item {
                 margin-bottom: 2.3rem;
                 text-transform: uppercase;
@@ -219,6 +259,12 @@ body {
             outline: 0;
             margin-left: auto;
             margin-right: 1.4rem;
+            cursor: pointer;
+            &:focus {
+                animation: pulsate;
+                animation-iteration-count: infinite;
+                animation-duration: 1s;
+            }
         }
         &__number {
             align-self: stretch;
@@ -228,7 +274,22 @@ body {
             background-color: var(--color-primary);
             color: #fff;
             padding: 2rem;
+            span:first-child {
+                font-size: 1.7rem;
+            }
         }
+    }
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
@@ -238,17 +299,24 @@ body {
     font-size: 1.4rem;
     color: var(--color-grey-dark-2);
     padding: 4.5rem;
+    @media only screen and (max-width: $bp-small) {
+        flex-direction: column;
+    }
 }
 
 .hotel__main {
-    flex: 0 0 60%;
+    flex: 0 0 55%;
     background-color: #fff;
-    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, .5);
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4.5rem;
+    padding: 3rem;
     margin-right: 4.5rem;
+    @media only screen and (max-width: $bp-small) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
     &__para {
         border-bottom: 1px solid var(--color-grey-light-2);
         p {
@@ -267,7 +335,10 @@ body {
         flex-wrap: wrap;
         li {
             flex: 0 0 50%;
-            margin-bottom: .7rem;
+            margin-bottom: 0.7rem;
+            @media only screen and (max-width: $bp-small) {
+                flex: 0 0 100%;
+            }
         }
         a {
             text-decoration: none;
@@ -313,11 +384,110 @@ body {
 .user-reviews {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    align-items: center;
+    .user-btn {
+        border: none;
+        color: var(--color-primary);
+        background-color: transparent;
+        border-bottom: 1px solid var(--color-primary);
+        display: inline-block;
+        outline: 0;
+        letter-spacing: 2px;
+        padding: 1rem;
+        cursor: pointer;
+        &:focus {
+            animation: pulsate;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+        }
+    }
 }
 
 .review {
     background-color: #fff;
-    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, .5);
-    margin-bottom: 2rem;
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.5);
+    margin-bottom: 3.5rem;
+    padding: 3rem;
     flex: 1;
+    &__user {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        img {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+        }
+        &-box {
+            font-size: 1.2rem;
+            margin-right: auto;
+            margin-left: 1.2rem;
+            color: var(--color-grey-light-4);
+            p:first-child {
+                color: var(--color-grey-dark-3);
+            }
+        }
+        &__score {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+    }
+    blockquote {
+        color: var(--color-grey-dark-3);
+    }
+}
+
+.hotel__book {
+    background-color: #fff;
+    margin-top: 3rem;
+    text-align: center;
+    &__heading {
+        text-align: center;
+        color: var(--color-grey-light-4);
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.4rem;
+        }
+    }
+    &__btn {
+        font-size: 1.5rem;
+        background-image: linear-gradient( to right bottom, var(--color-primary-light), var(--color-primary-dark));
+        color: #fff;
+        border-radius: 100px;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        margin: 3.5rem;
+        cursor: pointer;
+        outline: 0;
+        &-hidden {
+            display: inline-block;
+            transition-property: transform;
+            transition-duration: 0.2s;
+            position: absolute;
+            left: 0;
+            padding: 2rem 0;
+            top: -100%;
+            width: 100%;
+        }
+        &-show {
+            display: inline-block;
+            transition-property: transform;
+            transition-duration: 0.2s;
+            padding: 2rem 7.5rem;
+        }
+        &:hover &-hidden {
+            transform: translateY(100%);
+        }
+        &:hover &-show {
+            transform: translateY(100%);
+        }
+        &:focus {
+            animation: pulsate;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+        }
+    }
 }
